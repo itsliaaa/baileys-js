@@ -8,7 +8,7 @@ import type { GroupMetadata, GroupParticipant, ParticipantAction, RequestJoinAct
 import type { Label } from './Label.js';
 import type { LabelAssociation } from './LabelAssociation.js';
 import type { MessageUpsertType, MessageUserReceiptUpdate, WAMessage, WAMessageKey, WAMessageUpdate } from './Message.js';
-import type { ConnectionState } from './State.js';
+import type { ConnectionState, NewChatMessageCapInfo } from './State.js';
 export type BaileysEventMap = {
     /** connection state has been updated -- WS closed, opened, connecting etc. */
     'connection.update': Partial<ConnectionState>;
@@ -153,6 +153,7 @@ export type BaileysEventMap = {
         id: string;
         update: any;
     };
+    'message-capping.update': NewChatMessageCapInfo;
     /** Settings and actions sync events */
     'chats.lock': {
         id: string;

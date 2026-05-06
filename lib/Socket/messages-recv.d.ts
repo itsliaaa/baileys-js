@@ -1,7 +1,7 @@
 import { Boom } from '@hapi/boom';
 import Long from 'long';
 import { proto } from '../../WAProto/index.js';
-import type { MessageReceiptType, MessageRelayOptions, SocketConfig, WAMessage, WAMessageKey } from '../Types/index.js';
+import type { MessageReceiptType, MessageRelayOptions, NewChatMessageCapInfo, SocketConfig, WAMessage, WAMessageKey } from '../Types/index.js';
 import { type BinaryNode } from '../WABinary/index.js';
 export declare const makeMessagesRecvSocket: (config: SocketConfig) => {
     sendMessageAck: (node: BinaryNode, errorCode?: number) => Promise<void>;
@@ -189,6 +189,6 @@ export declare const makeMessagesRecvSocket: (config: SocketConfig) => {
         exists: boolean;
     }[] | undefined>;
     fetchAccountReachoutTimelock: () => Promise<import("../Types/index.js").ReachoutTimelockState>;
-    fetchNewChatMessageCap: () => Promise<import("../Types/index.js").NewChatMessageCapInfo>;
+    fetchNewChatMessageCap: () => Promise<NewChatMessageCapInfo>;
 };
 //# sourceMappingURL=messages-recv.d.ts.map
