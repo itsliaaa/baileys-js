@@ -245,6 +245,8 @@ declare const makeWASocket: (config: UserFacingSocketConfig) => {
         jid: string;
         exists: boolean;
     }[] | undefined>;
+    fetchAccountReachoutTimelock: () => Promise<import("../index.js").ReachoutTimelockState>;
+    fetchNewChatMessageCap: () => Promise<import("../index.js").NewChatMessageCapInfo>;
 };
 export default makeWASocket;
 //# sourceMappingURL=index.d.ts.map

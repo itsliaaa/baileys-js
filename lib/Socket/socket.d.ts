@@ -1,5 +1,5 @@
 import { Boom } from '@hapi/boom';
-import type { SocketConfig } from '../Types/index.js';
+import { type NewChatMessageCapInfo, type ReachoutTimelockState, type SocketConfig } from '../Types/index.js';
 import { type BinaryNode } from '../WABinary/index.js';
 import { BinaryInfo } from '../WAM/BinaryInfo.js';
 import { USyncQuery } from '../WAUSync/index.js';
@@ -51,5 +51,7 @@ export declare const makeSocket: (config: SocketConfig) => {
         jid: string;
         exists: boolean;
     }[] | undefined>;
+    fetchAccountReachoutTimelock: () => Promise<ReachoutTimelockState>;
+    fetchNewChatMessageCap: () => Promise<NewChatMessageCapInfo>;
 };
 //# sourceMappingURL=socket.d.ts.map

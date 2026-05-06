@@ -258,6 +258,8 @@ export declare const makeCommunitiesSocket: (config: SocketConfig) => {
         jid: string;
         exists: boolean;
     }[] | undefined>;
+    fetchAccountReachoutTimelock: () => Promise<import("../Types/index.js").ReachoutTimelockState>;
+    fetchNewChatMessageCap: () => Promise<import("../Types/index.js").NewChatMessageCapInfo>;
 };
 export declare const extractCommunityMetadata: (result: BinaryNode) => GroupMetadata;
 //# sourceMappingURL=communities.d.ts.map

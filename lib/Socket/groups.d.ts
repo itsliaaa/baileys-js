@@ -150,6 +150,8 @@ export declare const makeGroupsSocket: (config: SocketConfig) => {
         jid: string;
         exists: boolean;
     }[] | undefined>;
+    fetchAccountReachoutTimelock: () => Promise<import("../Types/index.js").ReachoutTimelockState>;
+    fetchNewChatMessageCap: () => Promise<import("../Types/index.js").NewChatMessageCapInfo>;
 };
 export declare const extractGroupMetadata: (result: BinaryNode) => GroupMetadata;
 export type GroupsSocket = ReturnType<typeof makeGroupsSocket>;
