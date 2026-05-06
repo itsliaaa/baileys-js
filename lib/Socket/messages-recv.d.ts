@@ -1,8 +1,9 @@
+import NodeCache from '@cacheable/node-cache';
 import { Boom } from '@hapi/boom';
 import Long from 'long';
 import { proto } from '../../WAProto/index.js';
 import type { MessageReceiptType, MessageRelayOptions, NewChatMessageCapInfo, SocketConfig, WAMessage, WAMessageKey } from '../Types/index.js';
-import { type BinaryNode } from '../WABinary/index.js';
+import { type BinaryNode, type JidWithDevice } from '../WABinary/index.js';
 export declare const makeMessagesRecvSocket: (config: SocketConfig) => {
     sendMessageAck: (node: BinaryNode, errorCode?: number) => Promise<void>;
     sendRetryRequest: (node: BinaryNode, forceIncludeKeys?: boolean) => Promise<void>;
@@ -10,6 +11,10 @@ export declare const makeMessagesRecvSocket: (config: SocketConfig) => {
     fetchMessageHistory: (count: number, oldestMsgKey: WAMessageKey, oldestMsgTimestamp: number | Long) => Promise<string>;
     requestPlaceholderResend: (messageKey: WAMessageKey, msgData?: Partial<WAMessage>) => Promise<string | undefined>;
     messageRetryManager: import("../Utils/index.js").MessageRetryManager | null;
+    userDevicesCache: import("../Types/index.js").PossiblyExtendedCacheStore | NodeCache<JidWithDevice[]>;
+    devicesMutex: {
+        mutex<T>(code: () => Promise<T> | T): Promise<T>;
+    };
     issuePrivacyTokens: (jids: string[], timestamp?: number) => Promise<any>;
     assertSessions: (jids: string[], force?: boolean) => Promise<boolean>;
     relayMessage: (jid: string, message: proto.IMessage, { messageId: msgId, participant, additionalAttributes, additionalNodes, useUserDevicesCache, useCachedGroupMetadata, statusJidList }: MessageRelayOptions) => Promise<string>;
@@ -27,7 +32,7 @@ export declare const makeMessagesRecvSocket: (config: SocketConfig) => {
         nodes: BinaryNode[];
         shouldIncludeDeviceIdentity: boolean;
     }>;
-    getUSyncDevices: (jids: string[], useCache: boolean, ignoreZeroDevices: boolean) => Promise<(import("../WABinary/index.js").JidWithDevice & {
+    getUSyncDevices: (jids: string[], useCache: boolean, ignoreZeroDevices: boolean) => Promise<(JidWithDevice & {
         jid: string;
     })[]>;
     updateMemberLabel: (jid: string, memberLabel: string) => Promise<string>;
