@@ -60,7 +60,6 @@ export declare const HISTORY_SYNC_PAUSED_TIMEOUT_MS = 120000;
 export declare const MIN_PREKEY_COUNT = 5;
 export declare const INITIAL_PREKEY_COUNT = 812;
 export declare const UPLOAD_TIMEOUT = 30000;
-export declare const MIN_UPLOAD_INTERVAL = 5000;
 export declare const DEFAULT_CACHE_TTLS: {
     SIGNAL_STORE: number;
     MSG_RETRY: number;
